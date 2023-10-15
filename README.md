@@ -74,7 +74,7 @@ Generate current state file of the subscription if any, to make sure nothing imp
 
 
 ### Data Sources   
-"Data Sources" in terraform are used to get information about resources external to terraform, and use them to set up your terraform resources.  
+"Data Sources" in terraform are used to get information about resources which are not created through terraform, this can be achieved using our Get state file code as well. This is another approach.  
 
 
 ### terraform locals or local variables 
