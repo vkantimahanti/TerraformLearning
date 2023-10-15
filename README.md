@@ -23,6 +23,9 @@ Terraform uses the below key words as part of your code build.
     iv. statefile = when we execute below ** Execute Terraform Commands**, it will generate a state file post execution of the commands. If State file is missing, then we have to import the current state of infrastructure
        using terraform import command or use below command
 
+    #### Get Missing State file
+       terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
+
        terraform init -backend-config=".\backend.conf" -reconfigure
    
        backend.conf file will specific the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
@@ -36,9 +39,6 @@ https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 3. terraform plan - It will read the terraform files created by us, it will validate and check what all resources to be created, kind of simulation. create the state file.
 4. terraform apply - providing an approval to create the required resource infrastructure.
 5. terraform destroy - This is to remove the current infrastructure in the provider.
-
-### Get Missing State file
-terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
 
 ### Generate State file in remote state
 1. create a storage and container/folder in cloud provider resource group
