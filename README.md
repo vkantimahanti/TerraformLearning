@@ -24,15 +24,16 @@ Terraform uses the below key words as part of your code build.
        using terraform import command or use below command
 
        you can place the this file in a folder which is environment specific in order to generate the terraform file.   
-       terraform init -backend-config=".\backend.conf" -reconfigure  
 
+       terraform init -backend-config=".\backend.conf" -reconfigure
+   
        backend.conf file will specific the resource group 
 
 every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
 ### Execute Terraform Commands
-1. terraform INIT - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
+1. terraform init - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
 2. terraform validate - To validate our terraform code syntax. 
 3. terraform plan - It will read the terraform files created by us, it will validate and check what all resources to be created, kind of simulation. create the state file.
 4. terraform apply - providing an approval to create the required resource infrastructure.
