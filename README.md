@@ -16,7 +16,7 @@ Terraform uses the below key words as part of your code build.
 4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
 5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed.
 
-    Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
+    ### Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
     i. Provider = azure
     ii. Resource = resource group, storage account
     iii. variables = variables are passed to name the resouce group and storage account name.
