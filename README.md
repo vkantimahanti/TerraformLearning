@@ -53,10 +53,11 @@ Below are the steps to create terraform script and execution.
 The below steps are executed using any ide, I have used vs code. Open vscode terminal and execute the below below.  
  
 #### 1. Login to Azure to perform terraform activity
-Execute below commands in the terminal and provider the login, subscription and generate the account list.
-i. az login  
-ii. az account set -s subscription_name  
-iii. az account list --output table  
+Execute below commands in the terminal and provider the login, subscription and generate the account list.  
+     
+       az login  
+       az account set -s subscription_name  
+       az account list --output table  
 
 #### 2.Terraform commands
 Generate current state file of the subscription if any, to make sure nothing impacts with our process, and then execute plan and if no issues then use apply command.  
