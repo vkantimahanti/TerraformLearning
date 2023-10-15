@@ -19,7 +19,7 @@ Terraform uses the below key words as part of your code build.
 every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
-    ### Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
+   Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
     i. Provider = azure  
     ii. Resource = resource group, storage account.    
     iii. variables = variables are passed to name the resouce group and storage account name, This will make our deployment more dynamic. 
