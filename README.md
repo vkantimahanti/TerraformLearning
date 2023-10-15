@@ -14,22 +14,29 @@ Terraform uses the below key words as part of your code build.
 2. Resources - Resource is a infrastructure block in each provider like vitrual machine in azure
 3. variables - Using variables makes our deployment more dynamic. A separate file variables.tf or terraform.vars to store all variable definitions.
 4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
-5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed.
+5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed. This is not a replacement for configuration management tool.
 
     ### Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
     i. Provider = azure  
     ii. Resource = resource group, storage account.    
-    iii. variables = variables are passed to name the resouce group and storage account name.  
-    iv. statefile = when we execute below **Terraform Commands**, it will generate a state file.  
+    iii. variables = variables are passed to name the resouce group and storage account name, This will make our deployment more dynamic. 
+    iv. statefile = when we execute below ** Execute Terraform Commands**, it will generate a state file post execution of the commands. If State file is missing, then we have to import the current state of infrastructure
+       using terraform import command or use below command
+
+       you can place the this file in a folder which is environment specific in order to generate the terraform file.   
+       terraform init -backend-config=".\backend.conf" -reconfigure  
+
+       backend.conf file will specific the resource group 
 
 every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
 ### Execute Terraform Commands
-1. terraform INIT - to initialize the provider and connect to terraform.
-2. terraform validate - to validate our terraform code syntax. 
-3. terraform plan - it will create the state file.
-4. terraform apply
+1. terraform INIT - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
+2. terraform validate - To validate our terraform code syntax. 
+3. terraform plan - It will read the terraform files created by us, it will validate and check what all resources to be created, kind of simulation. create the state file.
+4. terraform apply - providing an approval to create the required resource infrastructure.
+5. terraform destroy - This is to remove the current infrastructure in the provider.
 
 ### Get Missing State file
 terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
