@@ -60,6 +60,7 @@ iii. az account list --output table
 
 #### 2.Terraform commands
 Generate current state file of the subscription if any, to make sure nothing impacts with our process, and then execute plan and if no issues then use apply command.  
+       
        terraform init -backend-config=".\foldername\filename.conf" -reconfigure  
        terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan  
        terraform apply tfplan  
