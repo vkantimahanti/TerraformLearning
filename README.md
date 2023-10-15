@@ -16,6 +16,9 @@ Terraform uses the below key words as part of your code build.
 4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
 5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed. This is not a replacement for configuration management tool.
 
+every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
+https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
+
     ### Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
     i. Provider = azure  
     ii. Resource = resource group, storage account.    
@@ -28,10 +31,8 @@ Terraform uses the below key words as part of your code build.
 
        terraform init -backend-config=".\backend.conf" -reconfigure
    
-       backend.conf file will specific the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
+backend.conf file will specific the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
 
-every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
-https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
 ### Execute Terraform Commands
 1. terraform init - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
