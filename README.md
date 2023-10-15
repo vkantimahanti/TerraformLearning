@@ -26,6 +26,7 @@ https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
     iv. statefile = when we execute below ** Execute Terraform Commands**, it will generate a state file post execution of the commands. If State file is missing, then we have to import the current state of infrastructure
        using terraform import command or use below command
 
+
     #### Get Missing State file
        terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
 
