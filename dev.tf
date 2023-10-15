@@ -13,32 +13,36 @@ module "module_dev"{
         source = "./modules"
 
         # prefix provided before every resource as standard naming convention
+        
         prefix = "mydevenv"
 
         # resource group name
-        rgname = prefix + "rg1"
+        rgname = "mydevenv-rg1"
 
         # resource group location
         rglocation = "eastus"
 
         # vnet details 
-        vnet = prefix + "vnet"
+        vnet = "mydevenv-vnet"
         vnet_cidr_range = "10.10.0.0/16"
 
         # subnet details
-        subnet = prefix + "subnet"
+        subnet = "mydevenv-subnet"
         subnet_cidr_range = "10.10.1.0/24"
 
         # network security group details
-        nsg = prefix + "nsg"
+        nsg = "mydevenv-nsg"
+
+        # remote desktop details
+        rdp = "mydevenv-rdp"
 
         # network security rule
-        nsr = prefix + "nsr"
+        nsr = "mydevenv-nsr"
 
         # network interface
-        ni = prefix + "ni"
+        ni = "mydevenv-ni"
 
         # virtual machine
-        vm = prefix + "vm"
+        vm = "mydevenv-vm"
 
 }
