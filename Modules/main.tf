@@ -45,7 +45,7 @@ resource "azurerm_virtual_network" "vnet1" {
 resource "azurerm_subnet" "subnet1" {
   name                 = "${var.subnet}"
   resource_group_name  = azurerm_resource_group.rg1.name
-  virtual_network_name = zurerm_resource_group.vnet1.name
+  virtual_network_name = azurerm_virtual_network.vnet1.name
   address_prefixes     = ["${var.subnet_cidr_range}"]
 }
 
@@ -92,9 +92,9 @@ resource "azurerm_network_interface" "ni1" {
 
 
 resource "azurerm_windows_virtual_machine" "vm1" {
-  name                = "${var.vm0}"
-  resource_group_name = azurerm_resource_group.rsg1.name
-  location            = azurerm_resource_group.rsg1.location
+  name                = "${var.vm}"
+  resource_group_name = azurerm_resource_group.rg1.name
+  location            = azurerm_resource_group.rg1.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
   admin_password      = "P@$$w0rd1234!"
