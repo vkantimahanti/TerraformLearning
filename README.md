@@ -24,8 +24,8 @@ https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
        terraform init -backend-config=".\backend.conf" -reconfigure
    
-backend.conf file will specific the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
-
+backend.conf file will specify the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
+https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
 
 ### Execute Terraform Commands
 1. terraform init - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
@@ -34,28 +34,41 @@ backend.conf file will specific the resources details where state file needs to 
 4. terraform apply - providing an approval to create the required resource infrastructure.
 5. terraform destroy - This is to remove the current infrastructure in the provider.
 
-### Generate State file in remote state
-1. create a storage and container/folder in cloud provider resource group
-2. generate a backend config file to get the terraform.state file into cloud location.
-https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
-
-### azure process to perform terraform activity
-1. az login
-2. az account set -s subscription_name
-3. az account list --output table
-
-### Terraform commands
-terraform init -backend-config=".\foldername\filename.conf" -reconfigure
-terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan
-terraform apply tfplan
-
 ### Modules
-If we want to perform a template based deployed, we can follow modularized deployment.
+If we want to perform a template based deployed, we can follow modularized deployment. A module defines a set of parameters which will be passed as key value pairs to actual deployment. This approach is more helpful to create multiple environments in a very easy manner.
+If you observe here, I created a folder Modules and inside that there is a main.tf and variables.tf file, the parameter values for these two files are passed using dev.tf file. This is the most used approach in real time projects.
 
-Below is the script for deleting the existing module.
-terraform destroy --target=module.module_dev 
-or 
-terraform destroy --auto-approve
+## Sample terraform script on azure provider.
+Below are the steps to create terraform script and execution.
+1. Create a main.tf file. This file contains all the provider and resource details. check the code in below link which uses the
+          i. This code will have all the resource details that needs to be created, creating resource group, vnet , subnet, rdp etc.
+                 https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/main.tf
+2. Create variable file to declare all the variables whose values vary with each environment.
+                 https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/variables.tf
+4. create dev.tf file where all the declared variables are defined, similarly create a int.tf and prod.tf file for each environment. Make sure the source attribute is defined with exact module location.
+                 https://github.com/vkantimahanti/TerraformLearning/blob/main/dev.tf
+       
+
+### Execution Steps
+The below steps are executed using any ide, I have used vs code. Open vscode terminal and execute the below below/
+ 
+#### 1. Login to Azure to perform terraform activity
+Execute below commands in the terminal and provider the login, subscription and generate the account list.
+i. az login
+ii. az account set -s subscription_name
+iii. az account list --output table
+
+#### 2.Terraform commands
+Generate current state file of the subscription if any, to make sure nothing impacts with our process, and then execute plan and if no issues then use apply command.  
+       terraform init -backend-config=".\foldername\filename.conf" -reconfigure
+       terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan
+       terraform apply tfplan
+
+
+#### 3. Delete the existing module.
+       terraform destroy --target=module.module_dev 
+       or 
+       terraform destroy --auto-approve
 
 
 ### Data Sources 
