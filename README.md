@@ -1,16 +1,29 @@
 # TerraformLearning
-Learn Terraform Basics and try sample code for better understanding
+Learn Terraform Basics and try sample code for better , I would like to share my learnings with simple steps as below.
 
 # Terraform
-Terraform is infrastructure as code (IAC). Code is used to setup Infrastructure.
+Terraform is infrastructure as code (IAC), that allows you to build, modify and version Infrastructure in safe and efficient manner. The code looks similar to json.
+
+## Download Terraform from below website.
+1. Download the terraform exec file from the website https://developer.hashicorp.com/terraform/downloads as per required operating system.
+2. Make sure the path of the terraform file is available in environment variables so that it can be executed from any folder in cmd prompt. we will discuss the execution steps below.
 
 ## Terraform Concepts/Key Words
+Terraform uses the below key words as part of your code build.
 1. Provider - Is the API or Application like Azure, AWS or VMWare where infrastructure need to setup
 2. Resources - Resource is a infrastructure block in each provider like vitrual machine in azure
 3. variables - Using variables makes our deployment more dynamic. A separate file variables.tf or terraform.vars to store all variable definitions.
 4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
 5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed.
 
+    Lets Assume you are trying to build an infrastructure like storage account in azure. In that case 
+    Provider = azure
+    Resource = resource group, storage account
+    variables = variables are passed to name the resouce group and storage account name.
+    statefile = when we execute below **Terraform Commands**, it will generate a state file.
+
+every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
+https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 
 ### Execute Terraform Commands
 1. terraform INIT - to initialize the provider and connect to terraform.
