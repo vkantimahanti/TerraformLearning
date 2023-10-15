@@ -23,11 +23,9 @@ Terraform uses the below key words as part of your code build.
     iv. statefile = when we execute below ** Execute Terraform Commands**, it will generate a state file post execution of the commands. If State file is missing, then we have to import the current state of infrastructure
        using terraform import command or use below command
 
-       you can place the this file in a folder which is environment specific in order to generate the terraform file.   
-
        terraform init -backend-config=".\backend.conf" -reconfigure
    
-       backend.conf file will specific the resource group 
+       backend.conf file will specific the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
 
 every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
 https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
