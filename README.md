@@ -39,40 +39,40 @@ If we want to perform a template based deployed, we can follow modularized deplo
 If you observe here, I created a folder Modules and inside that there is a main.tf and variables.tf file, the parameter values for these two files are passed using dev.tf file. This is the most used approach in real time projects.
 
 ## Sample terraform script on azure provider.
-Below are the steps to create terraform script and execution.
-1. Create a main.tf file. This file contains all the provider and resource details. check the code in below link which uses the
-          i. This code will have all the resource details that needs to be created, creating resource group, vnet , subnet, rdp etc.
-                 https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/main.tf
-2. Create variable file to declare all the variables whose values vary with each environment.
-                 https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/variables.tf
-4. create dev.tf file where all the declared variables are defined, similarly create a int.tf and prod.tf file for each environment. Make sure the source attribute is defined with exact module location.
-                 https://github.com/vkantimahanti/TerraformLearning/blob/main/dev.tf
-       
+Below are the steps to create terraform script and execution.  
+       1. Create a main.tf file. This file contains all the provider and resource details. check the code in below link.  
+                 i. This code will have all the resource details that needs to be created, creating resource group, vnet , subnet, rdp etc.  
+                        https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/main.tf  
+       2. Create variable file to declare all the variables whose values vary with each environment.  
+                        https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/variables.tf  
+       4. create dev.tf file where all the declared variables are defined, similarly create a int.tf and prod.tf file for each environment. Make sure the source attribute is defined with exact module location.  
+                        https://github.com/vkantimahanti/TerraformLearning/blob/main/dev.tf  
+              
 
 ### Execution Steps
-The below steps are executed using any ide, I have used vs code. Open vscode terminal and execute the below below/
+The below steps are executed using any ide, I have used vs code. Open vscode terminal and execute the below below.  
  
 #### 1. Login to Azure to perform terraform activity
 Execute below commands in the terminal and provider the login, subscription and generate the account list.
-i. az login
-ii. az account set -s subscription_name
-iii. az account list --output table
+i. az login  
+ii. az account set -s subscription_name  
+iii. az account list --output table  
 
 #### 2.Terraform commands
 Generate current state file of the subscription if any, to make sure nothing impacts with our process, and then execute plan and if no issues then use apply command.  
-       terraform init -backend-config=".\foldername\filename.conf" -reconfigure
-       terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan
-       terraform apply tfplan
+       terraform init -backend-config=".\foldername\filename.conf" -reconfigure  
+       terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan  
+       terraform apply tfplan  
 
 
 #### 3. Delete the existing module.
-       terraform destroy --target=module.module_dev 
-       or 
-       terraform destroy --auto-approve
+       terraform destroy --target=module.module_dev   
+       or   
+       terraform destroy --auto-approve  
 
 
-### Data Sources 
-"Data Sources" in terraform are used to get information about resources external to terraform, and use them to set up your terraform resources.
+### Data Sources   
+"Data Sources" in terraform are used to get information about resources external to terraform, and use them to set up your terraform resources.  
 
 
 ### terraform locals or local variables 
