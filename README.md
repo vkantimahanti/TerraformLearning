@@ -66,6 +66,10 @@ Generate current state file of the subscription if any, to make sure nothing imp
        terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan  
        terraform apply tfplan  
 
+##### Module code Execution
+       terraform init
+       terraform apply - var-file "dev.tf "
+
 
 #### 3. Delete the existing module.
        terraform destroy --target=module.module_dev   
