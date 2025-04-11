@@ -3,7 +3,7 @@ Learn Terraform Basics and try sample code for better , Want to build a terrafor
 
 ## Contents
 
-- [azure Infrastructure](#Azure Infrastructure)                       
+- (https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#azure-infrastructure)                      
 
 
 ## Azure Infrastructure
