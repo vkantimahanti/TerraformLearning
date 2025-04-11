@@ -1,15 +1,8 @@
 # TerraformLearning
-Learn Terraform Basics and try sample code for better , I would like to share my learnings with simple steps as below.
+Learn Terraform Basics and try sample code for better , Want to build a terraform code to create azure infrastructure with databricks, storage account under a private and secure network. As part of it I would like to walk through azure and terraform basics highlevel.
 
 ## Terraform
 Terraform is infrastructure as code (IAC), that allows you to build, modify and version Infrastructure in safe and efficient manner. The code looks similar to json.
-
-### Download Terraform from below website.
-1. Download the terraform exec file from the website https://developer.hashicorp.com/terraform/downloads as per required operating system.
-2. Make sure the path of the terraform file is available in environment variables so that it can be executed from any folder in cmd prompt. we will discuss the execution steps below.
-
-
-**NOTE** - Learning azure infrastructure basics helps to build and execute terraform infrastructure code.
 
 
 ## Azure Infrastructure
@@ -68,8 +61,14 @@ PEP creates an Network Interface and DNS Configuration for secure and private co
 
 
 
-
 ## Terraform Concepts 
+
+### Download Terraform from below website.
+1. Download the terraform exec file from the website https://developer.hashicorp.com/terraform/downloads as per required operating system.
+2. Make sure the path of the terraform file is available in environment variables so that it can be executed from any folder in cmd prompt. we will discuss the execution steps below.
+
+**NOTE** - Learning azure infrastructure basics helps to build and execute terraform infrastructure code.
+
 
 ### Terraform Concepts/Key Words
 Terraform uses the below key words as part of your code build.
