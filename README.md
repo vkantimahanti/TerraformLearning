@@ -76,30 +76,6 @@ Terraform uses the below key words as part of your code build.
 5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed. This is not a replacement for configuration management tool.
 
 
-
-## Terraform structure (modular) 
-
-terraform/
-├── modules/
-│   ├── vnet/
-│   ├── databricks/
-│   ├── storage/
-│   ├── nat_gateway/
-│   └── route_table/
-├── env/
-│   ├── dev/
-│   │   └── main.tf
-│   │   └── terraform.tfvars
-│   └── prod/
-│       └── main.tf
-│       └── terraform.tfvars
-└── variables.tf
-
-
-
-every code block of any provider and resource are available in terraform website, we need to tweet the variable names and select the one which we want to use.
-https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
-
 ### Get Missing State file
        terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
 
