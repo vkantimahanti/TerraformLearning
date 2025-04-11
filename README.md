@@ -9,7 +9,7 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
 2. Make sure the path of the terraform file is available in environment variables so that it can be executed from any folder in cmd prompt. we will discuss the execution steps below.
 
 
-**NOTE - Learning azure infrastructure basics helps to build and execute terraform infrastructure code. **
+** NOTE - Learning azure infrastructure basics helps to build and execute terraform infrastructure code. **
 
 
 ## Azure Infrastructure
