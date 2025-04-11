@@ -18,8 +18,10 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
 
 I would like to share a simple secure architecture that emphasizes on how to create resources on a safe and secured network.  
 
-
 Let's say am building a secure data platform on azure where databricks extracts and writes data to storage account and all traffic must stay private.
+
+<img src="azure_infra.png">
+
 
 Let's go through some networking concepts of azure as it plays major role in further resource setup.
 
