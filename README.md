@@ -3,8 +3,9 @@ Learn Terraform Basics and try sample code for better , Want to build a terrafor
 
 ## Contents
 
+- [Project Walk Through](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#project-walk-through)
 - [Azure Infrastructure](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#azure-infrastructure)
-- [Azure Networking Concepts](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#network-concepts)                    
+    - [Azure Networking Concepts](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#network-concepts)                    
 
 
 ## Project Walk Through
