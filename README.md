@@ -7,6 +7,28 @@ Learn Terraform Basics and try sample code for better , Want to build a terrafor
 - [Azure Networking Concepts](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#network-concepts)                    
 
 
+## Project Walk Through
+
+1. Create resource Group
+2. Create virtual network vnet-learn-hub
+3. Create three subnets (public, private and private end point) under vnet-learn-hub 
+
+    i.      subnet-dbw-public -- connecting databricks from any IP
+
+    ii.     subnet-dbw-private -- connecting to other resources within network
+    
+    iii.    subnet-private-endpoint -- for creating private IP while creating PEP
+
+4. Create storage account with vnet and disable public access
+    
+    i.      After storage account is created, create private end point and DNS by mapping to same vnet and subnet-private-endpoint
+
+    ii.     you will see a private end point, network interface and private DNS zone.
+
+**Note**: NetworkWatcherRG a resource group will be created automatically which is backend service of Network watcher responsible for network monitor, diagnostics and is fully managed by azure.
+
+
+
 ## Azure Infrastructure
 
 ### Azure Architecture - Secure Data Platform
@@ -39,26 +61,6 @@ PEP creates an Network Interface and DNS Configuration for secure and private co
 7. DNS(Domain Name System) Configuration: Azure updates the DNS records to ensure Fully Qualified Domain Name (FQDN) of the service resolves to the private end point IP's address within your VNet like private-app.contoso.com. This involves creating a private DNS Zone pointing to the private IP address.
  
 5. Route table: Controls the routing of network traffic within virtual network. Enables to define custom routes that overrides azure default route behavior like directing traffic to specific destinations such as gateways or subnets. It gets associated by default to PEP, also can define custom routes for contorlling the traffic. 
-
-### Project Walk Through
-
-1. Create resource Group
-2. Create virtual network vnet-learn-hub
-3. Create three subnets (public, private and private end point) under vnet-learn-hub 
-
-    i.      subnet-dbw-public -- connecting databricks from any IP
-
-    ii.     subnet-dbw-private -- connecting to other resources within network
-    
-    iii.    subnet-private-endpoint -- for creating private IP while creating PEP
-
-4. Create storage account with vnet and disable public access
-    
-    i.      After storage account is created, create private end point and DNS by mapping to same vnet and subnet-private-endpoint
-
-    ii.     you will see a private end point, network interface and private DNS zone.
-
-**Note**: NetworkWatcherRG a resource group will be created automatically which is backend service of Network watcher responsible for network monitor, diagnostics and is fully managed by azure.
 
 
 
