@@ -85,15 +85,6 @@ Terraform uses the below key words as part of your code build.
 4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
 5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed. This is not a replacement for configuration management tool.
 
-
-### Get Missing State file
-       terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
-
-       terraform init -backend-config=".\backend.conf" -reconfigure
-   
-backend.conf file will specify the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
-https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
-
 ### Execute Terraform Commands
 1. terraform init - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
 2. terraform validate - To validate our terraform code syntax. 
@@ -104,6 +95,16 @@ https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
 ### Modules
 If we want to perform a template based deployed, we can follow modularized deployment. A module defines a set of parameters which will be passed as key value pairs to actual deployment. This approach is more helpful to create multiple environments in a very easy manner.
 If you observe here, I created a folder Modules and inside that there is a main.tf and variables.tf file, the parameter values for these two files are passed using dev.tf file. This is the most used approach in real time projects.
+
+
+### Get Missing State file
+       terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
+
+       terraform init -backend-config=".\backend.conf" -reconfigure
+   
+backend.conf file will specify the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
+https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
+
 
 ## Sample terraform script on azure provider.
 Below are the steps to create terraform script and execution.  
