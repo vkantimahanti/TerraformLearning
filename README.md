@@ -2,9 +2,8 @@
 Learn Terraform Basics and try sample code for better , Want to build a terraform code to create azure infrastructure with databricks, storage account under a private and secure network. As part of it I would like to walk through azure and terraform basics highlevel.
 
 # Contents
-|Topic Name          | Hyperlink                                    |
----------------------|----------------------------------------------|
-|azure Infrastructure|(#Azure Infrastructure)                       | 
+
+-- [azure Infrastructure](#Azure Infrastructure)                       | 
 
 
 ## Azure Infrastructure
