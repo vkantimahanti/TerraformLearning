@@ -67,7 +67,6 @@ PEP creates an Network Interface and DNS Configuration for secure and private co
 5. Route table: Controls the routing of network traffic within virtual network. Enables to define custom routes that overrides azure default route behavior like directing traffic to specific destinations such as gateways or subnets. It gets associated by default to PEP, also can define custom routes for contorlling the traffic. 
 
 
-
 ## Terraform
 Terraform is infrastructure as code (IAC), that allows you to build, modify and version Infrastructure in safe and efficient manner. The code looks similar to json.
 
@@ -77,6 +76,28 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
 
 **NOTE** - Learning azure infrastructure basics helps to build and execute terraform infrastructure code.
 
+
+# Root Module Structure:
+# terraform/
+# ├── main.tf
+# ├── variables.tf
+# ├── outputs.tf
+# ├── terraform.tfvars (optional)
+# ├── envs/
+# │   ├── dev.tfvars
+# │   └── prod.tfvars
+# └── modules/
+#     ├── resource_group/
+#     │   ├── main.tf
+#     │   ├── variables.tf
+#     │   └── outputs.tf
+#     ├── storage_account/
+#     ├── vnet/
+#     ├── databricks/
+#     ├── nat_gateway/
+#     ├── private_endpoint/
+#     ├── nsg/
+#     └── route_table/
 
 ### Terraform Concepts/Key Words
 Terraform uses the below key words as part of your code build.
