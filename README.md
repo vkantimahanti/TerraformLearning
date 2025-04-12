@@ -1,5 +1,5 @@
 # TerraformLearning
-Learn Terraform Basics and try sample code for better understanding. Terraform is IAAC (Infrastructure as a Code) to build cloud infrastructure. Let's understand azure resources on a high level and terraform to build the resources.
+Learn Terraform Basics and try sample code for better understanding. Terraform is IAAC (Infrastructure as a Code) to build cloud infrastructure. As part of our learning, Let's understand about azure resources on a high level and use terraform to build the resources.
 
 ## Contents
 
