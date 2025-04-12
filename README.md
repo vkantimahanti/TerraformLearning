@@ -79,25 +79,25 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
 
 ### Root Module Structure:
 ##### terraform/
-##### ├── main.tf
-##### ├── variables.tf
-##### ├── outputs.tf
-##### ├── terraform.tfvars (optional)
-##### ├── envs/
-##### │   ├── dev.tfvars
-##### │   └── prod.tfvars
-##### └── modules/
-#####     ├── resource_group/
-#####     │   ├── main.tf
-#####     │   ├── variables.tf
-#####     │   └── outputs.tf
-#####     ├── storage_account/
-#####     ├── vnet/
-#####     ├── databricks/
-#####     ├── nat_gateway/
-#####     ├── private_endpoint/
-#####     ├── nsg/
-#####     └── route_table/
+    ##### ├── main.tf
+    ##### ├── variables.tf
+    ##### ├── outputs.tf
+    ##### ├── terraform.tfvars (optional)
+    ##### ├── envs/
+    ##### │   ├── dev.tfvars
+    ##### │   └── prod.tfvars
+    ##### └── modules/
+    #####     ├── resource_group/
+    #####     │   ├── main.tf
+    #####     │   ├── variables.tf
+    #####     │   └── outputs.tf
+    #####     ├── storage_account/
+    #####     ├── vnet/
+    #####     ├── databricks/
+    #####     ├── nat_gateway/
+    #####     ├── private_endpoint/
+    #####     ├── nsg/
+    #####     └── route_table/
 
 ### Terraform Concepts/Key Words
 Terraform uses the below key words as part of your code build.
