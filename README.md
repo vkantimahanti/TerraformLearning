@@ -1,5 +1,5 @@
 # TerraformLearning
-Learn Terraform Basics and try sample code for better , Want to build a terraform code to create azure infrastructure with databricks, storage account under a private and secure network. As part of it I would like to walk through azure and terraform basics highlevel.
+Learn Terraform Basics and try sample code for better understanding. Terraform is IAAC (Infrastructure as a Code) to build cloud infrastructure. Let's understand azure resources on a high level and terraform to build the resources.
 
 ## Contents
 
@@ -11,6 +11,7 @@ Learn Terraform Basics and try sample code for better , Want to build a terrafor
 
 
 ## Project Walk Through
+Want to create azure infrastructure with few resources like databricks, storage account under a private and secure network. As part of it I would like to walk through azure and terraform basics highlevel. 
 
 1. Create resource Group
 2. Create virtual network vnet-learn-hub
