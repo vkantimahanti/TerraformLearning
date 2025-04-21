@@ -83,7 +83,7 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
     ##### ├── variables.tf
     ##### ├── outputs.tf
     ##### ├── terraform.tfvars (optional)
-    ##### ├── envs/
+    ##### ├── Project_SDP/
     ##### │   ├── dev.tfvars
     ##### │   └── prod.tfvars
     ##### └── modules/
