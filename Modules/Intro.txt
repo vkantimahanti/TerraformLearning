@@ -1,1 +1,0 @@
-This Module folder will hold code which is common across various stages or environments or can be consumed repetitive.
