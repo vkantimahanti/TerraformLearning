@@ -1,4 +1,4 @@
-subscription_id = "e4f3ef0c-2749-4332-b920-e3b3dd4b7cd2"
+subscription_id = "e4f3ef0c-2749-4332"
 
 location             = "East US"
 resource_group_name  = "rg-dev-learn-sdp"
