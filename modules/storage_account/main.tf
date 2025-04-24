@@ -6,6 +6,7 @@ resource "azurerm_storage_account" "this" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   #enable_https_traffic_only = true
+  public_network_access_enabled   = false
 }
 
 resource "azurerm_private_endpoint" "storage_pe" {

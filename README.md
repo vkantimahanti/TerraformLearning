@@ -1,33 +1,9 @@
 # TerraformLearning
-Learn Terraform Basics and try sample code for better understanding. Terraform is IAAC (Infrastructure as a Code) to build cloud infrastructure. As part of our learning, Let's understand about azure resources on a high level and use terraform to build the resources.
-
-## Contents
-
-- [Project Walk Through](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#project-walk-through)
-- [Azure Infrastructure](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#azure-infrastructure)
-    - [Azure Networking Concepts](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#network-concepts)
-- [Terraform](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#terraform)
-    - [Terraform basic Concepts](https://github.com/vkantimahanti/TerraformLearning/blob/main/README.md#terraform-conceptskey-words)                
+Learn Terraform Basics and try sample code for better understanding. Terraform is IAAC (Infrastructure as a Code) to build cloud infrastructure. As part of our learning, Let's understand about azure resources on a high level and use terraform to build the resources.              
 
 
 ## Project Walk Through
 Want to create azure infrastructure with few resources like databricks, storage account under a private and secure network. As part of it I would like to walk through azure and terraform basics highlevel. 
-
-1. Create resource Group
-2. Create virtual network vnet-learn-hub
-3. Create three subnets (public, private and private end point) under vnet-learn-hub 
-
-    i.      subnet-dbw-public -- connecting databricks from any IP
-
-    ii.     subnet-dbw-private -- connecting to other resources within network
-    
-    iii.    subnet-private-endpoint -- for creating private IP while creating PEP
-
-4. Create storage account with vnet and disable public access
-    
-    i.      After storage account is created, create private end point and DNS by mapping to same vnet and subnet-private-endpoint
-
-    ii.     you will see a private end point, network interface and private DNS zone.
 
 **Note**: NetworkWatcherRG a resource group will be created automatically which is backend service of Network watcher responsible for network monitor, diagnostics and is fully managed by azure.
 
@@ -47,7 +23,7 @@ Let's say am building a secure data platform on azure where databricks extracts 
 Let's go through some networking concepts of azure as it plays major role in further resource setup.
 
 
-### Network Concepts 
+### azure Network Concepts 
 1. VNet(Virtual Network) - logical network isolation from other VNet's. Let's say if we block complete 2nd floor in a building for a office other are not allowed.
 
 2. Subnet - Divison within VNet, like we are dividing the space and allocating to different teams.
@@ -84,8 +60,10 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
     ##### ├── outputs.tf
     ##### ├── terraform.tfvars (optional)
     ##### ├── Project_SDP/
-    ##### │   ├── dev.tfvars
-    ##### │   └── prod.tfvars
+    ##### │   ├──dev
+    ##### │   |  ├──dev.tfvars
+    ##### │   |──qa 
+    ##### │   |──prod
     ##### └── modules/
     #####     ├── resource_group/
     #####     │   ├── main.tf
@@ -94,18 +72,23 @@ Terraform is infrastructure as code (IAC), that allows you to build, modify and 
     #####     ├── storage_account/
     #####     ├── vnet/
     #####     ├── databricks/
-    #####     ├── nat_gateway/
-    #####     ├── private_endpoint/
+    #####     ├── dns_zone/
     #####     ├── nsg/
-    #####     └── route_table/
 
 ### Terraform Concepts/Key Words
 Terraform uses the below key words as part of your code build.
 1. Provider - Is the API or Application like Azure, AWS or VMWare where infrastructure need to setup
 2. Resources - Resource is a infrastructure block in each provider like vitrual machine in azure
-3. variables - Using variables makes our deployment more dynamic. A separate file variables.tf or terraform.vars to store all variable definitions.
-4. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
-5. Provisioners - ability to run additional steps or tasks when a resource is created or destroyed. This is not a replacement for configuration management tool.
+3. statefile - After deployment, terraform generates a state file to keep track of current state of the infrastructure, it will use this file to compare the current state of infra with desired state using this file. A file with terraform.tfstate will be created in working directory.
+
+|File                                | Purpose                                                                             |
+|------------------------------------|-------------------------------------------------------------------------------------|
+|main.tf (module folder)             | Defines sepecific resource(s) for that module, example: modules/databricks/main.tf  |         
+|variables.tf (module folder)        | Declares input the module expects from the caller (to be passed from the root)      |
+|outputs.tf (module folder)          | Module returns or exposes outputs to root, that can be passed to other modules.     |
+|main.tf (root folder)               | Calls modules and wires inputs/outputs together                                     |
+|variables.tf (root folder)          | Declares all the variables that root expects to use                                 |
+|dev.tfvars (env/project_sdp folder) | Holds environment-specific values (like dev/prod differences)                       |
 
 ### Execute Terraform Commands
 1. terraform init - This command will download the terraform plugin to interact with the provider, provider can be azure, aws or gcp.
@@ -114,11 +97,6 @@ Terraform uses the below key words as part of your code build.
 4. terraform apply - providing an approval to create the required resource infrastructure.
 5. terraform destroy - This is to remove the current infrastructure in the provider.
 
-### Modules
-If we want to perform a template based deployed, we can follow modularized deployment. A module defines a set of parameters which will be passed as key value pairs to actual deployment. This approach is more helpful to create multiple environments in a very easy manner.
-If you observe here, I created a folder Modules and inside that there is a main.tf and variables.tf file, the parameter values for these two files are passed using dev.tf file. This is the most used approach in real time projects.
-
-
 ### Get Missing State file
        terraform import azurerm_resource_group.rg /subscriptions/xxxxxxxxxxxxx/resourcegroup/subscriptionname
 
@@ -126,18 +104,7 @@ If you observe here, I created a folder Modules and inside that there is a main.
    
 backend.conf file will specify the resources details where state file needs to be generated. You can place the this file in a folder which is environment specific in order to generate the terraform file.   
 https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
-
-
-## Sample terraform script on azure provider.
-Below are the steps to create terraform script and execution.  
-       1. Create a main.tf file. This file contains all the provider and resource details. check the code in below link.  
-                 i. This code will have all the resource details that needs to be created, creating resource group, vnet , subnet, rdp etc.  
-                        https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/main.tf  
-       2. Create variable file to declare all the variables whose values vary with each environment.  
-                        https://github.com/vkantimahanti/TerraformLearning/blob/main/Modules/variables.tf  
-       4. create dev.tf file where all the declared variables are defined, similarly create a int.tf and prod.tf file for each environment. Make sure the source attribute is defined with exact module location.  
-                        https://github.com/vkantimahanti/TerraformLearning/blob/main/dev.tf  
-              
+     
 
 ### Execution Steps
 The below steps are executed using any ide, I have used vs code. Open vscode terminal and execute the below below.  
@@ -146,19 +113,15 @@ The below steps are executed using any ide, I have used vs code. Open vscode ter
 Execute below commands in the terminal and provider the login, subscription and generate the account list.  
      
        az login  
-       az account set -s subscription_name  
+       az account set -subscription "ejlsjfsiusln"  
        az account list --output table  
 
 #### 2.Terraform commands
 Generate current state file of the subscription if any, to make sure nothing impacts with our process, and then execute plan and if no issues then use apply command.  
        
-       terraform init -backend-config=".\foldername\filename.conf" -reconfigure  
-       terraform plan -var-file .\foldername\terraform.tfvars -out=tfplan  
-       terraform apply tfplan  
-
-##### Module code Execution
-       terraform init
-       terraform apply - var-file "dev.tf "
+       terraform init 
+       terraform plan -var-file="Project_SDP/dev/dev.tfvars" 
+       terraform apply -var-file="Project_SDP/dev/dev.tfvars"
 
 
 #### 3. Delete the existing module.
@@ -167,17 +130,5 @@ Generate current state file of the subscription if any, to make sure nothing imp
        terraform destroy --auto-approve  
 
 
-### Data Sources   
-"Data Sources" in terraform are used to get information about resources which are not created through terraform, this can be achieved using our Get state file code as well. This is another approach.  
-
-
-### terraform locals or local variables 
-we can create local variables and use it across multiples places.
-    
-    locals{
-        resourgroup_name = "testrsg"
-    }
-
-we can use locals.resourcegroup_name at multiple places instead of resource group name
 
 
